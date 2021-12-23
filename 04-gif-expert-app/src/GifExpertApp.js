@@ -1,37 +1,34 @@
-import { useState } from "react"
-import { AddCategory } from "./components/AddCategory";
-import { GifGrid } from "./components/GifGrid";
+import React, { useState } from 'react'
+import { AddCategory } from './components/AddCategory'
+import { GifGrid } from './components/GifGrid'
 
+const GifExpertApp = () => {
 
-const GifExpertApp =()=>{
-
-    const [categories, setCategories] = useState(['One Punch']);
-    // const handleAdd =() =>{
-    //     //usando operador express
-    //     //setCategories(['Hunter', ...categories])
-    //    setCategories(categories => [...categories, 'Hunter']) //El primer arg es el valor del estado anterior y luego regresa el nuevo state
+    
+    const [categories, setCategories] = useState(['One Punch'])
+    // const handleAdd= ()=>{
+    //     setCategories([...categories, 'Hunter'])
     // }
 
-    return(
+    return (
         <>
-            <h2>GifExpertApp</h2>
-            <AddCategory setCategories={ setCategories }/>
-            <hr></hr>
-            {/* <button onClick={handleAdd}>Agregar</button> */}
+          <h2>GifExpertApp</h2>
+          <AddCategory setCategories={ setCategories }/> 
+          <hr />
 
-            <ol>
-                {
-                    categories.map( category => 
-                    <GifGrid 
-                        key={category}
-                        category={category}
+          <ol>
+              {
+                  categories.map( category =>{
+                    return <GifGrid 
+                    key={category} 
+                    category={category} 
                     />
-                    )
-                }
-            </ol>
-
+                  })
+              }
+          </ol>
         </>
     )
 }
 
-export default GifExpertApp;
+
+export default GifExpertApp

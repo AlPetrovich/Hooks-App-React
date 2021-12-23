@@ -1,38 +1,33 @@
-import { useState } from "react"
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const AddCategory= ({setCategories}) =>{
+export const AddCategory = ({setCategories}) => {
 
-    const [InputValue, setInputValue] = useState(''); //si use no tiene nada es undefined entonces se pone como string vacio
+    const [inputValue, setInputValue] = useState('');
 
-    const handleInputChange= ( evento )=>{
-        //console.log(evento.target.value);
-        setInputValue(evento.target.value);
+    const handleInputChange = (e)=>{
+        setInputValue(e.target.value);
     }
 
-    const handleSubmit=(e) =>{
+    const handleSubmit = (e)=>{
         e.preventDefault();
-        if( InputValue.trim().length>2){
-            setCategories(cats => [...cats, InputValue]);
+        if(inputValue.trim().length > 2 ){
+            setCategories((categories)=> [...categories, inputValue])
             setInputValue('');
         }
-        
     }
 
     return (
-        <form onSubmit={ handleSubmit }>
+       <form onSubmit={handleSubmit}>
             <input
-
-            type="text"
-            value={InputValue}
-            onChange={handleInputChange}>
-
-            </input>
-        </form>
+             type='text'
+             value={ inputValue }
+             onChange={handleInputChange}
+             />
+       </form>
     )
-
 }
-//propiedad de la linea 4 es requerida
+
 AddCategory.propTypes={
     setCategories: PropTypes.func.isRequired
 }
