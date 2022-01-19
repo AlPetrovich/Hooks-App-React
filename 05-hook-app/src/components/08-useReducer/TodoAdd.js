@@ -3,6 +3,8 @@ import { useForm } from "../../hooks/useForm";
 
 export const TodoAdd = ({ handleAddTodo }) => {
 
+    
+
     const [{ description }, handleInputChange, reset] = useForm({
         description: "",
     });
@@ -20,7 +22,6 @@ export const TodoAdd = ({ handleAddTodo }) => {
           
         handleAddTodo( newTodo )
         reset();
-
     }
 
 
@@ -29,7 +30,7 @@ export const TodoAdd = ({ handleAddTodo }) => {
       <h4>Agregar TODO</h4>
       <hr></hr>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit }>
         <input
           type="text"
           name="description"

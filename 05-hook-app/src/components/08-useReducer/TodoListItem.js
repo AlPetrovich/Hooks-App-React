@@ -13,7 +13,7 @@ export const TodoListItem = ({ todo, index, handleDelete, handleToggle }) => {
           {index + 1}.{todo.desc}
         </p>
         <button
-          onClick={() => handleDelete(todo.id)}
+          onClick={() => handleDelete(todo.id)} //necesito un argumento por eso func=>
           className="btn btn-danger"
         >
           Borrar

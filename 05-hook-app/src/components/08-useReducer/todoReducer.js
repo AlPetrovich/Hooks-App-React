@@ -7,7 +7,7 @@ export const todoReducer = (state = [], action)=>{
             return [...state, action.payload];
         
         case 'delete':
-            return state.filter( todo => todo.id !== action.payload)
+            return state.filter( todo => todo.id !== action.payload) //122321
 
 
         case 'toggle':

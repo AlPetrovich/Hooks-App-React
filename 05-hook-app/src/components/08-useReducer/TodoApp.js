@@ -5,14 +5,16 @@ import { TodoAdd } from "./TodoAdd";
 import "./styles.css";
 
 const init = () => {
+  //si hay toDos lo devuelvo como arrays si no existe devuelvo array vacio
   return JSON.parse(localStorage.getItem("todos")) || [];
 };
 
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todoReducer, [], init);
+  //lo que retorne init es el initialState
+  const [todos, dispatch] = useReducer(todoReducer, [], init); //initialState por defecto es un arreglo vacio
 
- 
-
+  //localStorage solo guarda strings NO objeto
+    //cambia toDo y ejecuta esta logica constantemente
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
