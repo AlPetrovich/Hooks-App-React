@@ -1,25 +1,24 @@
+import { HeroCard } from "./HeroCard";
 import { getHeroesByPublisher } from "../../selectors/getHeroesByPublisher";
 
 
-export const HeroList = ({publisher}) => {
-
-    console.log(publisher)
+export const HeroList = ( {publisher} ) => {
 
     const heroes = getHeroesByPublisher( publisher );
 
   return(
-      <>
-        <h1>HeroList - {publisher} </h1>
+      <div className="row rows-cols-1 row-cols-md-3 g-3">
 
-        <ul>
-            {
-                heroes.map( (hero) =>(
-                    <li key={hero.id}>
-                        { hero.superhero }
-                    </li>
-                ))
-            }
-        </ul>
-      </>
+        {
+            heroes.map( (hero) =>(
+                <HeroCard 
+                    key={hero.id}
+                    { ...hero } //desestructuras todas las props de hero
+                
+                />
+            ))
+        }
+        
+      </div>
   )
 };
