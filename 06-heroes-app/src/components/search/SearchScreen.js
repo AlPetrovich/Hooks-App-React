@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { useForm } from '../../hooks/useForm';
@@ -17,11 +18,12 @@ export const SearchScreen = () => {
     });
     const { searchText } = value;
 
-    const heroesFilted = getHeroesByName(searchText);
+    
+    const heroesFilted = useMemo(()=> getHeroesByName(q), [ q ]); //el retorno (resultado) de la funcion se memoriza + dependencia
    
     const handleSearch = (e) => {
         e.preventDefault();
-        navigate(`?=${ searchText }`);
+        navigate(`?q=${ searchText }`);
     }
 
   return (
@@ -62,6 +64,12 @@ export const SearchScreen = () => {
                 >
                     <h4>Resultados</h4>
                     <hr></hr>
+                    {
+                        (searchText === '')    
+                            ? <div className="alert alert-info">Buscar un heroe</div>
+                            :(heroesFilted.length === 0) 
+                            && <div className="alert alert-danger"> No hay resultado: {searchText} </div>
+                    }
                     {
                         heroesFilted.map(hero=>(
                             <HeroCard  
