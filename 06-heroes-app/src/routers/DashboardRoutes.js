@@ -12,7 +12,7 @@ export const DashboardRoutes = () => {
         <Navbar />
           <div className="container">
             <Routes>
-
+                {/* estas rutas solo se podran ver si el usuario esta autenticado */}
                 <Route path="marvel" element={<MarvelScreen />} />
                 <Route path="dc" element={<DcScreen />} />
                 <Route path="search" element={<SearchScreen />} />
