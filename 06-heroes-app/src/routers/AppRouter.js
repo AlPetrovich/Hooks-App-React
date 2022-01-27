@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LoginScreen } from "../components/login/LoginScreen";
 import { DashboardRoutes } from "./DashboardRoutes";
 import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 
 
@@ -12,7 +13,13 @@ export const AppRouter = () => {
 
       <Routes>
 
-        <Route path="/login" element={<LoginScreen />} />
+        {/* <Route path="/login" element={<LoginScreen />} /> */}
+        <Route path="/login" element={
+            <PublicRoute>
+                <LoginScreen />
+            </PublicRoute>
+          }
+         />
         
         {/* PrivateRoute es quien verifica al usuario y permite ingresar al dashboard */}
         <Route path="/*" element={

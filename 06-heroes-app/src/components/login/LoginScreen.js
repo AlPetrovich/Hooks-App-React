@@ -17,7 +17,10 @@ export const LoginScreen = () => {
 
         dispatch(action)
 
-        navigate('/marvel',{
+        //ultima pag que estuvo el usuario
+        const lastPath = localStorage.getItem('lastPath') || '/marvel';
+
+        navigate(lastPath,{
             replace: true
         })
     };
