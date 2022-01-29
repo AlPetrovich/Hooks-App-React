@@ -1,4 +1,3 @@
-//Sistema de rutas Principal
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -9,7 +8,7 @@ import {
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { AuthRouter } from './AuthRouter';
 
-
+//Sistema de rutas Principal
 export const AppRouter = () => {
   return (
 

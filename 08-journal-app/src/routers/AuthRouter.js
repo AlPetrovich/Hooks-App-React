@@ -1,10 +1,9 @@
-//Encargado de tener todas las paginas relacionadas al Auth
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
 
-
+//Encargado de tener todas las paginas relacionadas al Auth
 export const AuthRouter = () => {
     return (
         <div className='auth__main'>
