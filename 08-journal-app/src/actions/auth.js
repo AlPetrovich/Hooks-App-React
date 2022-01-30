@@ -1,6 +1,18 @@
 import { types } from "../types/types"
 import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
 
+export const login = (uid, displayName) =>{
+    return {
+        type : types.login,
+        payload: {
+            uid,
+            displayName
+        }
+    }
+}
+
+
+
 export const startLoginEmailPassword=(email,password)=>{
     return (dispatch)=>{
 
@@ -8,6 +20,24 @@ export const startLoginEmailPassword=(email,password)=>{
             dispatch( login(123,'pedro'))
         }, 3500);
 
+    }
+}
+
+export const startRegisterWithEmailPasswordName = (email, password, name) =>{
+    return (dispatch) =>{
+        //autentica inmediatamente se crea el usuario
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then( async({ user }) =>{
+                
+                await user.updateProfile({ displayName: name });
+                
+                dispatch(
+                    login(user.uid, user.displayName)
+                )
+            })
+            .catch(e =>{
+                console.log(e)
+            })
     }
 }
 
@@ -25,12 +55,3 @@ export const startGoogleLogin=()=>{
     
 }
 
-export const login = (uid, displayName) =>{
-    return {
-        type : types.login,
-        payload: {
-            uid,
-            displayName
-        }
-    }
-}
