@@ -25,7 +25,7 @@ export const RegisterScreen = () => {
     e.preventDefault()
     
     if(isFormValid()){
-      dispatch(startRegisterWithEmailPasswordName(email, password , name));
+      dispatch(startRegisterWithEmailPasswordName(email, password , name)); //disparar accion de registrar
     }
 
   }

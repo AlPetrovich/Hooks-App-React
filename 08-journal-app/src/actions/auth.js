@@ -1,5 +1,6 @@
 import { types } from "../types/types"
 import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
+import { finishLoading, startLoading } from "./ui";
 
 export const login = (uid, displayName) =>{
     return {
@@ -11,25 +12,31 @@ export const login = (uid, displayName) =>{
     }
 }
 
-
-
 export const startLoginEmailPassword=(email,password)=>{
     return (dispatch)=>{
+        dispatch(startLoading());
 
-        setTimeout(() => {
-            dispatch( login(123,'pedro'))
-        }, 3500);
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then( ({user})=>{
+                dispatch( login(user.uid, user.displayName ));
 
+                dispatch(finishLoading() );
+            })
+            .catch(e =>{
+                console.log(e);
+                dispatch(finishLoading() );
+            })
     }
 }
 
 export const startRegisterWithEmailPasswordName = (email, password, name) =>{
+    //tarea asincrona
     return (dispatch) =>{
-        //autentica inmediatamente se crea el usuario
+        //autentica inmediatamente se crea el usuario y logea en firebase
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then( async({ user }) =>{
-                
-                await user.updateProfile({ displayName: name });
+                //esperar que se haga la actualizacion
+                await user.updateProfile({ displayName: name }); //displayname de user sera igual al argumento de mi func
                 
                 dispatch(
                     login(user.uid, user.displayName)
