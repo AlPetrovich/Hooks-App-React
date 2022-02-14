@@ -2,6 +2,9 @@ import React from 'react';
 import { JournalEntries } from './JournalEntries';
 
 export const Sidebar = () => {
+
+    
+
   return (
 
         <aside className='journal__sidebar'>
