@@ -1,9 +1,14 @@
 import React from 'react';
 import { JournalEntries } from './JournalEntries';
+import  {useDispatch} from 'react-redux';
 
 export const Sidebar = () => {
 
-    
+    const dispatch = useDispatch();
+
+    const handleLogout=()=>{
+        dispatch()
+    }
 
   return (
 
@@ -14,7 +19,10 @@ export const Sidebar = () => {
                     <span> Alexis</span>
                 </h3>
 
-                <button className='btn'> 
+                <button 
+                    className='btn'
+                    onClick={handleLogout}
+                > 
                     Logout
                 </button>
 
