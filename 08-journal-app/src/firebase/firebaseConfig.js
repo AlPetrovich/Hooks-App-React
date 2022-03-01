@@ -2,7 +2,7 @@ import firebase  from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth'
 
-
+//Pag - firebase
 const firebaseConfig = {
     apiKey: "AIzaSyA_9CCWLOg9DgjITXWyPAjZ6fwQJreCUM8",
     authDomain: "react-app-project-4f5bf.firebaseapp.com",
@@ -12,7 +12,6 @@ const firebaseConfig = {
     appId: "1:251280741352:web:1fce3a818d5c251abb0a5d"
 };
   
-
 firebase.initializeApp(firebaseConfig);
 
 //referencia base de datos
