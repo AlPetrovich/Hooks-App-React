@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 
 // componente para que no me traiga character con el mismo nombre que alter ego
 const CharactersByHero = ({alter_ego, characters})=>{
-    if(alter_ego === characters) return (<></>);
-    return <p>{characters}</p>
+    return (alter_ego === characters)? <></> : <p>{characters}</p>
 }
 
 export const HeroCard = ({
@@ -35,7 +34,7 @@ export const HeroCard = ({
                             (alter_ego !== characters)  && charactersByHero
                         } */}
                         <CharactersByHero alter_ego={alter_ego} characters={characters}/>
-                        
+
                         <p className="card-text">
                             <small className="text-muted">{first_appearance}</small>
                         </p>
